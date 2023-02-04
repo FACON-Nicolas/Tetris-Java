@@ -1,6 +1,8 @@
 package faconnicolas.project.tetris.color;
 
-public class ColorUtils {
+public class ColorFactory implements Colorable {
+
+    private int value;
 
     public static Color getBlue() {
         return Color.BLUE;
@@ -48,4 +50,8 @@ public class ColorUtils {
         };
     }
 
+    @Override
+    public Color getColor() {
+        return getColor(value);
+    }
 }
