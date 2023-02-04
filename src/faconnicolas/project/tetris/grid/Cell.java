@@ -1,13 +1,16 @@
 package faconnicolas.project.tetris.grid;
 
 import faconnicolas.project.tetris.color.Color;
-import faconnicolas.project.tetris.color.ColorFactory;
+import faconnicolas.project.tetris.color.ColorUtil;
+import faconnicolas.project.tetris.window.Drawable;
 import faconnicolas.project.tetris.window.Window;
+
+import java.awt.*;
 
 /**
  * Cell class, Used to get cells in our tetris grid.
  */
-public class Cell implements ICell {
+public class Cell implements ICell, Drawable {
 
     /**
      * Cell value
@@ -33,6 +36,19 @@ public class Cell implements ICell {
         this.value = value;
         this.row = row;
         this.column = column;
+    }
+
+    /**
+     * Init cell and gives the value thanks to the color
+     *
+     * @param color color value
+     *
+     * @param row row for the cell
+     *
+     * @param column column for the cell
+     */
+    public Cell(Color color, int row, int column) {
+        this(ColorUtil.getValueFromColor(color), row, column);
     }
 
     /**
@@ -80,7 +96,7 @@ public class Cell implements ICell {
      */
     @Override
     public Color getColor() {
-        return ColorFactory.getColor(value);
+        return ColorUtil.getColor(value);
     }
 
 
@@ -111,5 +127,16 @@ public class Cell implements ICell {
      */
     public int getValue() {
         return value;
+    }
+
+    /**
+     * draw the sprite in the screen
+     *
+     * @param g graphics
+     */
+    @Override
+    public void draw(Graphics g) {
+        g.setColor(getColor().getColor());
+        g.fillRect(getX(), getY(), Window.CASE_SIZE - 1, Window.CASE_SIZE - 1);
     }
 }

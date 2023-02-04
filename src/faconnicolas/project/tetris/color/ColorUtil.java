@@ -4,7 +4,7 @@ package faconnicolas.project.tetris.color;
  * ColorFactory is a class that gives colors and
  * specific color according the value given.
  */
-public class ColorFactory implements Colorable {
+public class ColorUtil implements Colorable {
 
     /**
      * value used to get the color
@@ -122,10 +122,24 @@ public class ColorFactory implements Colorable {
         };
     }
 
+    public static int getValueFromColor(Color color) {
+        return switch(color) {
+            case BLACK -> 0;
+            case GREY -> 1;
+            case CYAN -> 2;
+            case YELLOW -> 3;
+            case PURPLE -> 4;
+            case BLUE -> 5;
+            case ORANGE -> 6;
+            case RED -> 7;
+            case GREEN -> 8;
+        };
+    }
+
     /**
      * get the color according to value in the factory
      *
-     * @see ColorFactory#getColor(int)
+     * @see ColorUtil#getColor(int)
      *
      * @return color according to value
      */

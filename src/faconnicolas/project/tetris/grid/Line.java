@@ -1,22 +1,39 @@
 package faconnicolas.project.tetris.grid;
 
+import faconnicolas.project.tetris.window.Drawable;
+
+import java.awt.*;
 import java.util.ArrayList;
+import faconnicolas.project.tetris.color.Color;
 
 /**
  * Line is here to have lines in my Tetris' grid.
  */
-public class Line implements ILine {
+public class Line implements ILine, Drawable {
 
     /**
      * line's container
      */
     private ArrayList<Cell> line;
 
+    public Line() {
+        this.line = new ArrayList<>();
+    }
+
     /**
      * constructor, init line's container.
      */
-    public Line() {
-        this.line = new ArrayList<>();
+    public Line(int indexLine) {
+        this();
+        initLine(indexLine);
+    }
+
+    void initLine(int indexLine) {
+        line.add(new Cell(Color.GREY, indexLine, 0));
+        for (int i = 1; i < Grid.GRID_WIDTH - 1; i++)
+            line.add(new Cell(Color.BLACK, indexLine, i));
+        line.add(new Cell(Color.GREY, indexLine, Grid.GRID_WIDTH - 1));
+
     }
 
     /**
@@ -60,5 +77,20 @@ public class Line implements ILine {
     @Override
     public void set(int index, Cell cell) {
         line.set(index, cell);
+    }
+
+    /**
+     * draw the sprite in the screen
+     *
+     * @param g graphics
+     */
+    @Override
+    public void draw(Graphics g) {
+        for (Cell cell : line)
+            cell.draw(g);
+    }
+
+    void add(Color color, int index) {
+        line.add(new Cell(color, index, line.size()));
     }
 }
