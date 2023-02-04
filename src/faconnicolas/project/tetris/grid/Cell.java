@@ -47,4 +47,8 @@ public class Cell implements ICell {
     public int getY() {
         return Window.CASE_SIZE * row;
     }
+
+    public int getValue() {
+        return value;
+    }
 }
