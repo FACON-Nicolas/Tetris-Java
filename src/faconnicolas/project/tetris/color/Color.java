@@ -1,4 +1,4 @@
-package faconnicolas.project.tetris;
+package faconnicolas.project.tetris.color;
 
 public enum Color {
 
@@ -8,7 +8,9 @@ public enum Color {
     YELLOW(java.awt.Color.YELLOW),
     ORANGE(java.awt.Color.ORANGE),
     PURPLE(new java.awt.Color(102, 0, 153)),
-    GREEN(java.awt.Color.GREEN);
+    GREEN(java.awt.Color.GREEN),
+    GREY(new java.awt.Color(127, 127, 127)),
+    BLACK(java.awt.Color.BLACK);
 
     final java.awt.Color color;
 
