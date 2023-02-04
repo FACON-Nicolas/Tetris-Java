@@ -67,4 +67,11 @@ public enum Color {
     Color(java.awt.Color color) {
         this.color = color;
     }
+
+    /**
+     * @return return color according to Java Color class
+     */
+    public java.awt.Color getColor() {
+        return color;
+    }
 }

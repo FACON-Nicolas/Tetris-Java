@@ -122,6 +122,21 @@ public class ColorFactory implements Colorable {
         };
     }
 
+    public static int getValueFromColor(Color color) {
+        return switch(color) {
+            case BLACK -> 0;
+            case GREY -> 1;
+            case CYAN -> 2;
+            case YELLOW -> 3;
+            case PURPLE -> 4;
+            case BLUE -> 5;
+            case ORANGE -> 6;
+            case RED -> 7;
+            case GREEN -> 8;
+            default -> throw new UnsupportedOperationException("No value for this color");
+        };
+    }
+
     /**
      * get the color according to value in the factory
      *
