@@ -36,8 +36,11 @@ public class ColorFactory implements Colorable {
         return Color.GREY;
     }
 
+    private static Color getBlack() { return Color.BLACK; }
+
     public static Color getColor(int value) {
         return switch(value) {
+            case 0 -> getBlack();
             case 1 -> getGrey();
             case 2 -> getCyan();
             case 3 -> getYellow();
