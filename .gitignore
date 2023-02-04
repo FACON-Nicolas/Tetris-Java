@@ -27,5 +27,4 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-
-.idea/
+src/faconnicolas/project/tetris/grid/CellDecorator.java
