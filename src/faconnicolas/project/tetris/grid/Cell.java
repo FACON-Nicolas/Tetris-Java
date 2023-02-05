@@ -129,6 +129,10 @@ public class Cell implements ICell, Drawable {
         return value;
     }
 
+    public void setValue(int value) {
+        this.value = value;
+    }
+
     /**
      * draw the sprite in the screen
      *
