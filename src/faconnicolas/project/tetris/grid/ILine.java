@@ -29,4 +29,13 @@ public interface ILine {
      * @param cell new cell
      */
     void set(int index, Cell cell);
+
+    /**
+     * set a specific cell's value in index
+     *
+     * @param index cell's index
+     *
+     * @param value new cell's value
+     */
+    void set(int index, int value);
 }
