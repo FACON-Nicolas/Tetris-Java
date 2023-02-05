@@ -6,7 +6,7 @@ import faconnicolas.project.tetris.window.Drawable;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Grid implements Drawable {
+public class Grid implements Drawable, IGrid {
 
     public static final int GRID_WIDTH = 11;
     public static final int GRID_HEIGHT = 22;
@@ -20,6 +20,7 @@ public class Grid implements Drawable {
         initGrid();
     }
 
+    @Override
     public void initGrid() {
         Line line = new Line();
         for (int i = 0; i < GRID_WIDTH; i++)
@@ -46,5 +47,14 @@ public class Grid implements Drawable {
     public void draw(Graphics g) {
         for (Line line : lines)
             line.draw(g);
+    }
+
+    public int get(int row, int column) {
+        return lines.get(row).get(column).getValue();
+    }
+
+    @Override
+    public void set(int row, int column, int value) {
+        lines.get(row).get(column).setValue(value);
     }
 }

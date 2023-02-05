@@ -80,6 +80,17 @@ public class Line implements ILine, Drawable {
     }
 
     /**
+     * set a specific cell's value in index
+     *
+     * @param index cell's index
+     * @param value new cell's value
+     */
+    @Override
+    public void set(int index, int value) {
+        line.get(index).setValue(value);
+    }
+
+    /**
      * draw the sprite in the screen
      *
      * @param g graphics

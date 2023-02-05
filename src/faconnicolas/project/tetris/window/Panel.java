@@ -1,6 +1,9 @@
 package faconnicolas.project.tetris.window;
 
 import faconnicolas.project.tetris.grid.Grid;
+import faconnicolas.project.tetris.grid.GridTetriminosMerger;
+import faconnicolas.project.tetris.grid.IGrid;
+import faconnicolas.project.tetris.grid.Tetriminos;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +12,7 @@ import java.awt.event.ActionListener;
 
 public class Panel extends JPanel implements ActionListener, Updatable {
 
-    private final Grid grid;
+    private final GridTetriminosMerger grid;
 
     private final Timer timer;
 
@@ -20,7 +23,7 @@ public class Panel extends JPanel implements ActionListener, Updatable {
         setFocusable(true);
         timer = new Timer(DELAY, this);
         timer.start();
-        grid = new Grid();
+        grid = new GridTetriminosMerger(new Grid());
     }
 
     @Override
