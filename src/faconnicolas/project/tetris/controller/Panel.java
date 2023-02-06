@@ -34,7 +34,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     public static final int DELAY = 16;
 
-    private TetriminosManager tetriminos;
+    private final TetriminosManager tetriminos;
 
     /**
      * panel constructor, init panel and grid.
@@ -86,6 +86,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     @Override
     public void keyTyped(KeyEvent keyEvent) {
+        // do nothing
     }
 
     /**
