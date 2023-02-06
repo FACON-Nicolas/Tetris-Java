@@ -23,6 +23,11 @@ public class Tetriminos implements ITetriminos, GridPositionable {
     private int column;
 
     /**
+     * isPlaced attribute.
+     */
+    private boolean isPlaced = false;
+
+    /**
      * Tetriminos constructor, init the tetriminos according to a string value.
      *
      * @param value the string value.
@@ -131,5 +136,23 @@ public class Tetriminos implements ITetriminos, GridPositionable {
     @Override
     public void setColumn(int column) {
         this.column = column;
+    }
+
+    /**
+     * get isPlaced.
+     *
+     * @return <code>true</code> if the tetriminos is placed else <code>false</code>.
+     */
+    public boolean isPlaced() {
+        return isPlaced;
+    }
+
+    /**
+     * set isPlaced.
+     *
+     * @param placed new placed value.
+     */
+    public void setPlaced(boolean placed) {
+        isPlaced = placed;
     }
 }

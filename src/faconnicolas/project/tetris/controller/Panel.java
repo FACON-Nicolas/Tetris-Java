@@ -2,6 +2,9 @@ package faconnicolas.project.tetris.controller;
 
 import faconnicolas.project.tetris.model.grid.Grid;
 import faconnicolas.project.tetris.model.tetriminos.GridTetriminosMerger;
+import faconnicolas.project.tetris.model.tetriminos.Tetriminos;
+import faconnicolas.project.tetris.model.tetriminos.TetriminosFactory;
+import faconnicolas.project.tetris.model.tetriminos.TetriminosManager;
 import faconnicolas.project.tetris.model.window.Updatable;
 
 import javax.swing.*;
@@ -29,6 +32,8 @@ public class Panel extends JPanel implements ActionListener, Updatable {
      */
     public static final int DELAY = 16;
 
+    private TetriminosManager tetriminos;
+
     /**
      * panel constructor, init panel and grid.
      */
@@ -38,6 +43,7 @@ public class Panel extends JPanel implements ActionListener, Updatable {
         timer = new Timer(DELAY, this);
         timer.start();
         grid = new GridTetriminosMerger(new Grid());
+        tetriminos = new TetriminosManager(grid);
     }
 
     /**
@@ -48,6 +54,7 @@ public class Panel extends JPanel implements ActionListener, Updatable {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         update();
+        tetriminos.update();
     }
 
     /**
