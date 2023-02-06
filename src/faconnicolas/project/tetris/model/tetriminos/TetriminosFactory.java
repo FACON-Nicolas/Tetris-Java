@@ -1,6 +1,13 @@
 package faconnicolas.project.tetris.model.tetriminos;
 
+import java.util.Random;
+
 public class TetriminosFactory {
+
+    /**
+     * random object for nextInt
+     */
+    private static final Random R = new Random();
 
     /**
      * private Constructor, not used
@@ -97,6 +104,19 @@ public class TetriminosFactory {
                 {3, 3, 0},
                 {3, 3, 0},
                 {0, 0, 0}
+        };
+    }
+
+    public static String randomTetriminos() {
+        return switch (R.nextInt(7)) {
+            case 0 -> "I";
+            case 1 -> "J";
+            case 2 -> "L";
+            case 3 -> "O";
+            case 4 -> "S";
+            case 5 -> "T";
+            case 6 -> "Z";
+            default -> null;
         };
     }
 }
