@@ -22,6 +22,9 @@ public class Tetriminos implements ITetriminos, GridPositionable {
      */
     private int column;
 
+    /**
+     * isPlaced attribute.
+     */
     private boolean isPlaced = false;
 
     /**

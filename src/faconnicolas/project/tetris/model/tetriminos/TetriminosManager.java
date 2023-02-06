@@ -22,6 +22,9 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
      */
     private final ITetriminosMovable proxy;
 
+    /**
+     * time for manager, manages move down automatically.
+     */
     private long time;
 
 

@@ -107,6 +107,11 @@ public class TetriminosFactory {
         };
     }
 
+    /**
+     * Get random tetriminos
+     *
+     * @return new tetriminos character
+     */
     public static String randomTetriminos() {
         return switch (R.nextInt(7)) {
             case 0 -> "I";
