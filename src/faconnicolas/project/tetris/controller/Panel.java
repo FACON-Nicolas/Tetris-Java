@@ -1,7 +1,7 @@
 package faconnicolas.project.tetris.controller;
 
 import faconnicolas.project.tetris.model.grid.Grid;
-import faconnicolas.project.tetris.model.grid.GridTetriminosMerger;
+import faconnicolas.project.tetris.model.tetriminos.GridTetriminosMerger;
 import faconnicolas.project.tetris.model.window.Updatable;
 
 import javax.swing.*;

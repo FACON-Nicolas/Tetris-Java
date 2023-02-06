@@ -1,4 +1,4 @@
-package faconnicolas.project.tetris.model.grid;
+package faconnicolas.project.tetris.model.tetriminos;
 
 public class TetriminosFactory {
 
