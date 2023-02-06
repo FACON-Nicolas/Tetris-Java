@@ -1,5 +1,8 @@
 package faconnicolas.project.tetris.grid;
 
+/**
+ * Gettable is an interface to implements a getter in a grid.
+ */
 public interface Gettable {
 
     /**
