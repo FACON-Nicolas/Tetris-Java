@@ -12,6 +12,11 @@ public interface ITetriminos {
      */
     void rotate();
 
+    /**
+     * get the length
+     *
+     * @return the length
+     */
     int length();
 
 }

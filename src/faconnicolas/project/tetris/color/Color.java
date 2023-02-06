@@ -2,7 +2,7 @@ package faconnicolas.project.tetris.color;
 
 /**
  * This class is created to add colors in my project.
- *
+ * <p>
  * To make easier the color management, I only used the color I need for this game.
  */
 public enum Color {

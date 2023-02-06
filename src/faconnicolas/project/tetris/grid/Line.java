@@ -4,6 +4,7 @@ import faconnicolas.project.tetris.window.Drawable;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 import faconnicolas.project.tetris.color.Color;
 
 /**
@@ -14,10 +15,10 @@ public class Line implements ILine, Drawable {
     /**
      * line's container
      */
-    private ArrayList<Cell> line;
+    private final List<Cell> lineList;
 
     public Line() {
-        this.line = new ArrayList<>();
+        this.lineList = new ArrayList<>();
     }
 
     /**
@@ -29,10 +30,10 @@ public class Line implements ILine, Drawable {
     }
 
     void initLine(int indexLine) {
-        line.add(new Cell(Color.GREY, indexLine, 0));
+        lineList.add(new Cell(Color.GREY, indexLine, 0));
         for (int i = 1; i < Grid.GRID_WIDTH - 1; i++)
-            line.add(new Cell(Color.BLACK, indexLine, i));
-        line.add(new Cell(Color.GREY, indexLine, Grid.GRID_WIDTH - 1));
+            lineList.add(new Cell(Color.BLACK, indexLine, i));
+        lineList.add(new Cell(Color.GREY, indexLine, Grid.GRID_WIDTH - 1));
 
     }
 
@@ -43,7 +44,7 @@ public class Line implements ILine, Drawable {
      */
     @Override
     public boolean isFull() {
-        return line.stream().noneMatch(cell -> cell.getValue() != 0);
+        return lineList.stream().noneMatch(cell -> cell.getValue() != 0);
     }
 
     /**
@@ -51,8 +52,8 @@ public class Line implements ILine, Drawable {
      *
      * @return a copy fo the line's container.
      */
-    public ArrayList<Cell> getLine() {
-        return new ArrayList<>(line);
+    public List<Cell> getLineList() {
+        return new ArrayList<>(lineList);
     }
 
     /**
@@ -64,7 +65,7 @@ public class Line implements ILine, Drawable {
      */
     @Override
     public Cell get(int index) {
-        return line.get(index);
+        return lineList.get(index);
     }
 
     /**
@@ -76,7 +77,7 @@ public class Line implements ILine, Drawable {
      */
     @Override
     public void set(int index, Cell cell) {
-        line.set(index, cell);
+        lineList.set(index, cell);
     }
 
     /**
@@ -87,7 +88,7 @@ public class Line implements ILine, Drawable {
      */
     @Override
     public void set(int index, int value) {
-        line.get(index).setValue(value);
+        lineList.get(index).setValue(value);
     }
 
     /**
@@ -97,11 +98,18 @@ public class Line implements ILine, Drawable {
      */
     @Override
     public void draw(Graphics g) {
-        for (Cell cell : line)
+        for (Cell cell : lineList)
             cell.draw(g);
     }
 
+    /**
+     * add a value in the grid
+     *
+     * @param color color associated to the value you want.
+     *
+     * @param index the new index.
+     */
     void add(Color color, int index) {
-        line.add(new Cell(color, index, line.size()));
+        lineList.add(new Cell(color, index, lineList.size()));
     }
 }

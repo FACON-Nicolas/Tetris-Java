@@ -10,6 +10,7 @@ public interface Colorable {
 
     /**
      * gets Colorable object's color
+     * <p>
      * @return Colorable object's color
      */
     Color getColor();

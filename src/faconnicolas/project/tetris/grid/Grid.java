@@ -6,9 +6,19 @@ import faconnicolas.project.tetris.window.Drawable;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Grid is the Tetris game class. Used to represent the container.
+ */
 public class Grid implements Drawable, IGrid {
 
+    /**
+     * Width of the grid
+     */
     public static final int GRID_WIDTH = 11;
+
+    /**
+     * Height of the grid
+     */
     public static final int GRID_HEIGHT = 22;
 
     /**
@@ -16,10 +26,16 @@ public class Grid implements Drawable, IGrid {
      */
     private final ArrayList<Line> lines = new ArrayList<>();
 
+    /**
+     * Grid constructor, init grid
+     */
     public Grid() {
         initGrid();
     }
 
+    /**
+     * init the grid, called in the constructor.
+     */
     @Override
     public void initGrid() {
         Line line = new Line();
@@ -49,10 +65,28 @@ public class Grid implements Drawable, IGrid {
             line.draw(g);
     }
 
+    /**
+     * get the value at a specific cell
+     *
+     * @param row the row to check
+     *
+     * @param column the column to check
+     *
+     * @return the cell's value at [row][col]
+     */
     public int get(int row, int column) {
         return lines.get(row).get(column).getValue();
     }
 
+    /**
+     * set the value at a specific cell
+     *
+     * @param row the row to check
+     *
+     * @param column the column to check
+     *
+     * @param value the new value.
+     */
     @Override
     public void set(int row, int column, int value) {
         lines.get(row).get(column).setValue(value);
