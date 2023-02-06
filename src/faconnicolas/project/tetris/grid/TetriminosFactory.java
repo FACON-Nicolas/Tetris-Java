@@ -10,9 +10,9 @@ public class TetriminosFactory {
     }
 
     /**
-     * get I detriminos.
+     * get I tetriminos.
      *
-     * @return
+     * @return I tetriminos.
      */
     public static int[][] getI() {
         return new int[][]{
@@ -22,6 +22,11 @@ public class TetriminosFactory {
         };
     }
 
+    /**
+     * get T tetriminos.
+     *
+     * @return T tetriminos.
+     */
     public static int[][] getT() {
         return new int[][]{
                 {0, 0, 0},
@@ -30,6 +35,11 @@ public class TetriminosFactory {
         };
     }
 
+    /**
+     * get J tetriminos.
+     *
+     * @return J tetriminos.
+     */
     public static int[][] getJ() {
         return new int[][]{
                 {0, 0, 0},
@@ -38,6 +48,11 @@ public class TetriminosFactory {
         };
     }
 
+    /**
+     * get L tetriminos.
+     *
+     * @return L tetriminos.
+     */
     public static int[][] getL() {
         return new int[][] {
                 {0, 0, 0},
@@ -46,6 +61,11 @@ public class TetriminosFactory {
         };
     }
 
+    /**
+     * get Z tetriminos.
+     *
+     * @return Z tetriminos.
+     */
     public static int[][] getZ() {
         return new int[][] {
                 {0, 0, 0},
@@ -54,6 +74,11 @@ public class TetriminosFactory {
         };
     }
 
+    /**
+     * get S tetriminos.
+     *
+     * @return S tetriminos.
+     */
     public static int[][] getS() {
         return new int[][] {
                 {0, 0, 0},
@@ -62,6 +87,11 @@ public class TetriminosFactory {
         };
     }
 
+    /**
+     * get O tetriminos.
+     *
+     * @return O tetriminos.
+     */
     public static int[][] getO() {
         return new int[][] {
                 {3, 3, 0},
