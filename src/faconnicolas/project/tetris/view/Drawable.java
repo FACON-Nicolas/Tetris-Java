@@ -1,4 +1,4 @@
-package faconnicolas.project.tetris.window;
+package faconnicolas.project.tetris.view;
 
 import java.awt.*;
 

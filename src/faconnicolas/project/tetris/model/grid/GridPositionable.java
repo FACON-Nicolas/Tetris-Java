@@ -1,4 +1,4 @@
-package faconnicolas.project.tetris.grid;
+package faconnicolas.project.tetris.model.grid;
 
 /**
  * Grid positionable is an interface to implements row and column

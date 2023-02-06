@@ -1,4 +1,4 @@
-package faconnicolas.project.tetris.grid;
+package faconnicolas.project.tetris.model.grid;
 
 /**
  * ILine interface, used to define the Tetris' grid's lines.

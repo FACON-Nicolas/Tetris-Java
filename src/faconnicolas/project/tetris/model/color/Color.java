@@ -1,4 +1,4 @@
-package faconnicolas.project.tetris.color;
+package faconnicolas.project.tetris.model.color;
 
 /**
  * This class is created to add colors in my project.

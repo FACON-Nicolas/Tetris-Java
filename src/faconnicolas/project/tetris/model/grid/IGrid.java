@@ -1,6 +1,6 @@
-package faconnicolas.project.tetris.grid;
+package faconnicolas.project.tetris.model.grid;
 
-import faconnicolas.project.tetris.window.Drawable;
+import faconnicolas.project.tetris.view.Drawable;
 
 /**
  * IGrid is an interface to implements the grids.

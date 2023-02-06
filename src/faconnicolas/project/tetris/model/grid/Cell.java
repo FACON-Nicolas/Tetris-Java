@@ -1,9 +1,9 @@
-package faconnicolas.project.tetris.grid;
+package faconnicolas.project.tetris.model.grid;
 
-import faconnicolas.project.tetris.color.Color;
-import faconnicolas.project.tetris.color.ColorUtil;
-import faconnicolas.project.tetris.window.Drawable;
-import faconnicolas.project.tetris.window.Window;
+import faconnicolas.project.tetris.model.color.Color;
+import faconnicolas.project.tetris.model.color.ColorUtil;
+import faconnicolas.project.tetris.view.Drawable;
+import faconnicolas.project.tetris.view.Window;
 
 import java.awt.*;
 

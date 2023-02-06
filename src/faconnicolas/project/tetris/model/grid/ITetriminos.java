@@ -1,4 +1,4 @@
-package faconnicolas.project.tetris.grid;
+package faconnicolas.project.tetris.model.grid;
 
 public interface ITetriminos {
 

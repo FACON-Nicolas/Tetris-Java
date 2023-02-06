@@ -1,4 +1,4 @@
-package faconnicolas.project.tetris.window;
+package faconnicolas.project.tetris.model.window;
 
 /**
  * Updatable interface, used to call update method object at each frame.

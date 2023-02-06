@@ -1,4 +1,4 @@
-package faconnicolas.project.tetris.color;
+package faconnicolas.project.tetris.model.color;
 
 
 /**

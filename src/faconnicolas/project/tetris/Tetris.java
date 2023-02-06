@@ -1,6 +1,6 @@
 package faconnicolas.project.tetris;
 
-import faconnicolas.project.tetris.window.Window;
+import faconnicolas.project.tetris.view.Window;
 
 import javax.swing.*;
 

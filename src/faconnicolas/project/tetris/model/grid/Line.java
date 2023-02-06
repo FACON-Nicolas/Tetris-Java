@@ -1,11 +1,11 @@
-package faconnicolas.project.tetris.grid;
+package faconnicolas.project.tetris.model.grid;
 
-import faconnicolas.project.tetris.window.Drawable;
+import faconnicolas.project.tetris.view.Drawable;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import faconnicolas.project.tetris.color.Color;
+import faconnicolas.project.tetris.model.color.Color;
 
 /**
  * Line is here to have lines in my Tetris' grid.
