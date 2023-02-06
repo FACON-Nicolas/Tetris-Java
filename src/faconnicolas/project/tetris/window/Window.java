@@ -12,25 +12,46 @@ public class Window {
      */
     public static final int CASE_SIZE = 40;
 
-    private int width;
+    /**
+     * window width
+     */
+    private final int width;
 
-    private int height;
+    /**
+     * window height
+     */
+    private final int height;
 
-    private JFrame window;
+    /**
+     * window
+     */
+    private final JFrame tetrisWindow;
 
+    /**
+     * init game window.
+     *
+     * @param name window name
+     *
+     * @param width window width
+     *
+     * @param height window height
+     */
     public Window(String name, int width, int height) {
         this.width = width;
         this.height = height;
-        initWindow(name);
+        tetrisWindow = new JFrame(name);
+        initWindow();
     }
 
-    private void initWindow(String name) {
-        window = new JFrame(name);
-        window.setContentPane(new Panel());
-        window.setSize(width, height);
-        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        window.setResizable(false);
-        window.setVisible(true);
+    /**
+     * init window, called in the constructor.
+     */
+    private void initWindow() {
+        tetrisWindow.setContentPane(new Panel());
+        tetrisWindow.setSize(width, height);
+        tetrisWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        tetrisWindow.setResizable(false);
+        tetrisWindow.setVisible(true);
 
     }
 }
