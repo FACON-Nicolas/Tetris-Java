@@ -134,4 +134,12 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
                 setTetriminos(new Tetriminos(TetriminosFactory.randomTetriminos()));
         }
     }
+
+    /**
+     * place the tetriminos directly
+     */
+    public void place() {
+        while (!tetriminos.isPlaced()) down();
+        time = 0;
+    }
 }

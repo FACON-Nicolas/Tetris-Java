@@ -57,6 +57,7 @@ public class TetriminosProxy implements ITetriminosMovable {
      */
     @Override
     public void right() {
+        if (tetriminos.getRow() <= 2) return;
         grid.erase(tetriminos);
         tetriminos.setColumn(tetriminos.getColumn() + 1);
         if (!grid.canMarge(tetriminos))
@@ -69,6 +70,7 @@ public class TetriminosProxy implements ITetriminosMovable {
      */
     @Override
     public void left() {
+        if (tetriminos.getRow() <= 2) return;
         grid.erase(tetriminos);
         tetriminos.setColumn(tetriminos.getColumn() - 1);
         if (!grid.canMarge(tetriminos))
