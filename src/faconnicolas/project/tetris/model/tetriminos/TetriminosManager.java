@@ -135,6 +135,9 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
         }
     }
 
+    /**
+     * place the tetriminos directly
+     */
     public void place() {
         while (!tetriminos.isPlaced()) down();
         time = 0;
