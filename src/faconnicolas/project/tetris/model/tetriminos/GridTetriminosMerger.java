@@ -29,8 +29,8 @@ public class GridTetriminosMerger extends GridDecorator {
     public boolean canMarge(Tetriminos tetriminos) {
         int row = tetriminos.getRow();
         int column = tetriminos.getColumn();
-        if (column >= Grid.GRID_WIDTH - (1+ tetriminos.length()) || row >= Grid.GRID_HEIGHT - 1) return false;
-        for (int i = row; i > 1 || (tetriminos.getRow() - i) < tetriminos.length(); i--)
+        if (column >= Grid.GRID_WIDTH - (1+ tetriminos.length()) || row >= Grid.GRID_HEIGHT) return false;
+        for (int i = row; i >= 1 && (tetriminos.getRow() - i) < tetriminos.length(); i--)
             for (int j = column; j - tetriminos.getColumn() < tetriminos.length(); j++)
                 if (tetriminos.get(row - i, j - column) != 0 && get(i, j) != 0)
                     return false;
@@ -46,9 +46,10 @@ public class GridTetriminosMerger extends GridDecorator {
         if (!canMarge(tetriminos)) return;
         int row = tetriminos.getRow();
         int column = tetriminos.getColumn();
-        for (int i = row; i > 1 || (row - i) < tetriminos.length(); i--)
+        for (int i = row; i >= 1 && (row - i) < tetriminos.length(); i--)
             for (int j = column; j - column < tetriminos.length(); j++)
-                set(i, j, tetriminos.get(row - i, j - column));
+                if (tetriminos.get(row - i, j - column) != 0)
+                    set(i, j, tetriminos.get(row - i, j - column));
     }
 
     /**
@@ -59,8 +60,8 @@ public class GridTetriminosMerger extends GridDecorator {
     public void erase(Tetriminos tetriminos) {
         int row = tetriminos.getRow();
         int column = tetriminos.getColumn();
-        if (column >= Grid.GRID_WIDTH - (1+ tetriminos.length()) || row >= Grid.GRID_HEIGHT - 1) return;
-        for (int i = row; i > 1 || (row - i) < tetriminos.length(); i--) {
+        if (column >= Grid.GRID_WIDTH - (1+ tetriminos.length()) || row >= Grid.GRID_HEIGHT) return;
+        for (int i = row; i >= 1 && (row - i) < tetriminos.length(); i--) {
             for (int j = column; j - column < tetriminos.length(); j++) {
                 int r = row - i; // r is for row
                 int c = j - column; // c is for column
