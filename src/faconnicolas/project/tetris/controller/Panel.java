@@ -2,8 +2,6 @@ package faconnicolas.project.tetris.controller;
 
 import faconnicolas.project.tetris.model.grid.Grid;
 import faconnicolas.project.tetris.model.tetriminos.GridTetriminosMerger;
-import faconnicolas.project.tetris.model.tetriminos.Tetriminos;
-import faconnicolas.project.tetris.model.tetriminos.TetriminosFactory;
 import faconnicolas.project.tetris.model.tetriminos.TetriminosManager;
 import faconnicolas.project.tetris.model.window.Updatable;
 
@@ -11,11 +9,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import static java.awt.event.KeyEvent.*;
 
 /**
  * Panel is the controller in the game.
  */
-public class Panel extends JPanel implements ActionListener, Updatable {
+public class Panel extends JPanel implements ActionListener, Updatable, KeyListener {
 
     /**
      * game grid
@@ -39,7 +41,8 @@ public class Panel extends JPanel implements ActionListener, Updatable {
      */
     public Panel() {
         super();
-        setFocusable(true);
+        super.setFocusable(true);
+        addKeyListener(this);
         timer = new Timer(DELAY, this);
         timer.start();
         grid = new GridTetriminosMerger(new Grid());
@@ -74,5 +77,39 @@ public class Panel extends JPanel implements ActionListener, Updatable {
     @Override
     public void update() {
         grid.draw(getGraphics());
+    }
+
+    /**
+     * key typed event.
+     *
+     * @param keyEvent .
+     */
+    @Override
+    public void keyTyped(KeyEvent keyEvent) {
+    }
+
+    /**
+     * key pressed event.
+     *
+     * @param keyEvent .
+     */
+    @Override
+    public void keyPressed(KeyEvent keyEvent) {
+        switch (keyEvent.getKeyCode()) {
+            case VK_DOWN -> tetriminos.down();
+            case VK_RIGHT -> tetriminos.right();
+            case VK_LEFT -> tetriminos.left();
+            case VK_SPACE -> tetriminos.place();
+        }
+    }
+
+    /**
+     * Key released event.
+     *
+     * @param keyEvent .
+     */
+    @Override
+    public void keyReleased(KeyEvent keyEvent) {
+        // do nothing
     }
 }
