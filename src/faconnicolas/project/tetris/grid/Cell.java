@@ -18,9 +18,14 @@ public class Cell implements ICell, Drawable {
     private int value;
 
     /**
-     * row and column
+     * row attribute.
      */
-    private int row, column;
+    private int row;
+
+    /**
+     * column attribute.
+     */
+    private int column;
 
 
     /**
@@ -76,6 +81,7 @@ public class Cell implements ICell, Drawable {
      *
      * @param row new row
      */
+    @Override
     public void setRow(int row) {
         this.row = row;
     }
@@ -85,6 +91,7 @@ public class Cell implements ICell, Drawable {
      *
      * @param column new column
      */
+    @Override
     public void setColumn(int column) {
         this.column = column;
     }
