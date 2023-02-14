@@ -1,5 +1,7 @@
 package faconnicolas.project.tetris.model.tetriminos;
 
+import faconnicolas.project.tetris.model.player.Player;
+
 /**
  * Tetriminos Proxy is class used to control movements with all constraints in the grid.
  */
@@ -34,9 +36,11 @@ public class TetriminosProxy implements ITetriminosMovable {
     public void down() {
         grid.erase(tetriminos);
         tetriminos.setRow(tetriminos.getRow() + 1);
+        if (tetriminos.getRow() >= 1) Player.getInstance().setScore(Player.getInstance().getScore() + 10);
         if (!grid.canMarge(tetriminos)) {
             tetriminos.setRow(tetriminos.getRow() - 1);
             tetriminos.setPlaced(true);
+            Player.getInstance().setScore(Player.getInstance().getScore() - 10);
         } grid.merge(tetriminos);
     }
 
