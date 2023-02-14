@@ -67,21 +67,31 @@ public class Tetriminos implements ITetriminos, GridPositionable {
      */
     @Override
     public void rotate() {
-        int[][] copy = new int[tetriminosArray.length][tetriminosArray.length];
-        for (int i = 0; i < length(); i++)
-            for (int j = 0; j < length(); j++)
-                copy[j][length() - (i+1)] = tetriminosArray[i][j];
+        int[][] copy = new int[width()][height()];
+        for (int i = 0; i < height(); i++)
+            for (int j = 0; j < width(); j++)
+                copy[j][height() - (i+1)] = tetriminosArray[i][j];
         tetriminosArray = copy;
+    }
+
+    /**
+     * get the width
+     *
+     * @return the width
+     */
+    @Override
+    public int width() {
+        return tetriminosArray[0].length;
     }
 
 
     /**
-     * get the length
+     * get the height
      *
-     * @return the length
+     * @return the height
      */
     @Override
-    public int length() {
+    public int height() {
         return tetriminosArray.length;
     }
 
