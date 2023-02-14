@@ -97,4 +97,20 @@ public class TetriminosProxy implements ITetriminosMovable {
     public void setGrid(GridTetriminosMerger grid) {
         this.grid = grid;
     }
+
+    /**
+     * Rotate the Tetriminos.
+     * <p>
+     * 0 0 1    0 0 0
+     * 0 0 0 -> 0 0 0
+     * 0 0 0    0 0 1
+     */
+    @Override
+    public void rotate() {
+        grid.erase(tetriminos);
+        tetriminos.rotate();
+        if (!grid.canMarge(tetriminos))
+            for (int i = 0; i < 3; i++) tetriminos.rotate();
+        grid.merge(tetriminos);
+    }
 }
