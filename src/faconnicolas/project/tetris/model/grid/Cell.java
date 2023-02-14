@@ -136,6 +136,11 @@ public class Cell implements ICell, Drawable {
         return value;
     }
 
+    /**
+     * sets the value
+     *
+     * @param value new value for the value
+     */
     public void setValue(int value) {
         this.value = value;
     }
