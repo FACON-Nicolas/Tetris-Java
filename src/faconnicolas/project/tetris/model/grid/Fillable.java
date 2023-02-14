@@ -1,5 +1,8 @@
 package faconnicolas.project.tetris.model.grid;
 
+/**
+ * Fillable interface, check if the container is full.
+ */
 public interface Fillable {
 
     /**
