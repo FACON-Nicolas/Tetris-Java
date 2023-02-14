@@ -76,4 +76,9 @@ public abstract class GridDecorator implements IGrid {
     public IGrid getGrid() {
         return grid;
     }
+
+    @Override
+    public boolean isFull() {
+        return grid.isFull();
+    }
 }

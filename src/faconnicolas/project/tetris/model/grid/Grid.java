@@ -91,4 +91,14 @@ public class Grid implements Drawable, IGrid {
     public void set(int row, int column, int value) {
         lines.get(row).get(column).setValue(value);
     }
+
+    /**
+     * Check if the container is full
+     *
+     * @return <code>true</code> if it is full else <code>false</code>
+     */
+    @Override
+    public boolean isFull() {
+        return lines.get(1).getLineList().stream().filter(cell -> cell.getValue() < 2).count() < 3;
+    }
 }
