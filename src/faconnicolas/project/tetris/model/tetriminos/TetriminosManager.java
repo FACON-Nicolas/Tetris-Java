@@ -142,7 +142,7 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
         if (System.currentTimeMillis() - time >= 500) {
             time = System.currentTimeMillis();
             down();
-            if (tetriminos.isPlaced())
+            if (tetriminos.isPlaced() && !grid.isFull())
                 setTetriminos(new Tetriminos(TetriminosFactory.randomTetriminos()));
         }
     }
