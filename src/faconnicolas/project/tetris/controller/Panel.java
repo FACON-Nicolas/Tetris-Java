@@ -36,6 +36,8 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
 
     private final TetriminosManager tetriminos;
 
+    private boolean isOver = false;
+
     /**
      * panel constructor, init panel and grid.
      */
@@ -46,7 +48,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
         timer = new Timer(DELAY, this);
         timer.start();
         grid = new GridTetriminosMerger(new Grid());
-        tetriminos = new TetriminosManager(grid);
+        tetriminos = new TetriminosManager(grid, this);
     }
 
     /**
@@ -113,5 +115,21 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
     @Override
     public void keyReleased(KeyEvent keyEvent) {
         // do nothing
+    }
+
+    /**
+     * check if the game is over
+     *
+     * @return over
+     */
+    public boolean isOver() {
+        return isOver;
+    }
+
+    /**
+     * set over to true, the game is over.
+     */
+    public void setOver() {
+        isOver = true;
     }
 }
