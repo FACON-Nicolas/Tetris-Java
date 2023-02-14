@@ -153,6 +153,9 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
         }
     }
 
+    /**
+     * check tetriminos movement and update it if it has to do it.
+     */
     public void checkTetriminos() {
         if (tetriminos.isPlaced() && !grid.isFull()) {
             grid.update();
