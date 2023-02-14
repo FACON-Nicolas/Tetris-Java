@@ -1,6 +1,7 @@
 package faconnicolas.project.tetris.model.grid;
 
 import faconnicolas.project.tetris.model.color.Color;
+import faconnicolas.project.tetris.model.player.Player;
 import faconnicolas.project.tetris.model.tetriminos.Tetriminos;
 import faconnicolas.project.tetris.view.Drawable;
 
@@ -133,7 +134,7 @@ public class Grid implements Drawable, IGrid {
         for (int i = 0; i < GRID_HEIGHT; i++) {
             if (i == 0 || i == GRID_HEIGHT - 1) continue;
             if (lines.get(i).isFull()) {
-                tetris(i);
+                if (!tetris(i)) Player.getInstance().setScore(Player.getInstance().getScore() + 100);
                 lines.remove(i--);
                 Line line = new Line(1);
                 lines.add(1, line);
