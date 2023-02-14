@@ -96,6 +96,18 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
     }
 
     /**
+     * Rotate the Tetriminos.
+     * <p>
+     * 0 0 1    0 0 0
+     * 0 0 0 -> 0 0 0
+     * 0 0 0    0 0 1
+     */
+    @Override
+    public void rotate() {
+        proxy.rotate();
+    }
+
+    /**
      * Getter for grid
      *
      * @return grid
