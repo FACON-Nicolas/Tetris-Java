@@ -135,7 +135,10 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
      */
     @Override
     public void update() {
-        if (!panel.isOver()) moveDownTetriminos();
+        if (!panel.isOver()) {
+            moveDownTetriminos();
+            checkTetriminos();
+        }
     }
 
     /**
@@ -147,11 +150,17 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
         if (System.currentTimeMillis() - time >= 500) {
             time = System.currentTimeMillis();
             down();
-            if (tetriminos.isPlaced() && !grid.isFull()) {
-                grid.update();
-                setTetriminos(new Tetriminos(TetriminosFactory.randomTetriminos()));
-            } else if (grid.isFull()) panel.setOver();
         }
+    }
+
+    /**
+     * check tetriminos movement and update it if it has to do it.
+     */
+    public void checkTetriminos() {
+        if (tetriminos.isPlaced() && !grid.isFull()) {
+            grid.update();
+            setTetriminos(new Tetriminos(TetriminosFactory.randomTetriminos()));
+        } else if (grid.isFull()) panel.setOver();
     }
 
     /**

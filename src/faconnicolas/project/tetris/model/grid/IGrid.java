@@ -21,4 +21,20 @@ public interface IGrid extends Gettable, Settable, Drawable, Fillable, Updatable
      */
     void setTetriminos(Tetriminos tetriminos);
 
+    /**
+     * look if a tetris move exists.
+     *
+     * @param index index to start the check
+     *
+     * @return <code>true</code> if there's a tetris move, else <code>false</code>
+     */
+    boolean tetris(int index);
+
+    /**
+     * look if a tetris move exists.
+     *
+     * @return <code>true</code> if there's a tetris move, else <code>false</code>
+     */
+    boolean tetris();
+
 }

@@ -1,9 +1,7 @@
 package faconnicolas.project.tetris.model.grid;
 
 import faconnicolas.project.tetris.model.color.Color;
-import faconnicolas.project.tetris.model.tetriminos.ITetriminos;
 import faconnicolas.project.tetris.model.tetriminos.Tetriminos;
-import faconnicolas.project.tetris.model.window.Updatable;
 import faconnicolas.project.tetris.view.Drawable;
 
 import java.awt.*;
@@ -135,6 +133,7 @@ public class Grid implements Drawable, IGrid {
         for (int i = 0; i < GRID_HEIGHT; i++) {
             if (i == 0 || i == GRID_HEIGHT - 1) continue;
             if (lines.get(i).isFull()) {
+                tetris(i);
                 lines.remove(i--);
                 Line line = new Line(1);
                 lines.add(1, line);
@@ -148,5 +147,34 @@ public class Grid implements Drawable, IGrid {
     private void setLinesRow() {
         for (int i = 0; i < GRID_HEIGHT; i++)
             lines.get(i).setRow(i);
+    }
+
+    /**
+     * look if a tetris move exists.
+     *
+     * @param index index to start the check
+     *
+     * @return <code>true</code> if there's a tetris move, else <code>false</code>
+     */
+    @Override
+    public boolean tetris(int index) {
+        if (index + 3 >= GRID_HEIGHT - 1) return false;
+        for (int i = 0; i < 4; i++)
+            if (!lines.get(index + i).isFull())
+                return false;
+        return true;
+    }
+
+    /**
+     * look if a tetris move exists.
+     *
+     * @return <code>true</code> if there's a tetris move, else <code>false</code>
+     */
+    @Override
+    public boolean tetris() {
+        for (int i = 1; i < GRID_HEIGHT; i++)
+            if (tetris(i))
+                return true;
+        return false;
     }
 }

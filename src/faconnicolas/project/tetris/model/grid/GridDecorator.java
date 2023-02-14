@@ -107,4 +107,26 @@ public abstract class GridDecorator implements IGrid {
     public void update() {
         grid.update();
     }
+
+    /**
+     * look if a tetris move exists.
+     *
+     * @param index index to start the check
+     *
+     * @return <code>true</code> if there's a tetris move, else <code>false</code>
+     */
+    @Override
+    public boolean tetris(int index) {
+        return grid.tetris(index);
+    }
+
+    /**
+     * look if a tetris move exists.
+     *
+     * @return <code>true</code> if there's a tetris move, else <code>false</code>
+     */
+    @Override
+    public boolean tetris() {
+        return grid.tetris();
+    }
 }
