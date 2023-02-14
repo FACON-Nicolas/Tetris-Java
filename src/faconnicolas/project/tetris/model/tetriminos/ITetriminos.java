@@ -1,16 +1,6 @@
 package faconnicolas.project.tetris.model.tetriminos;
 
-public interface ITetriminos {
-
-    /**
-     * Rotate the Tetriminos.
-     *<p>
-     * 0 0 1    0 0 0
-     * 0 0 0 -> 0 0 0
-     * 0 0 0    0 0 1
-     *
-     */
-    void rotate();
+public interface ITetriminos extends Rotatable {
 
     /**
      * get the length

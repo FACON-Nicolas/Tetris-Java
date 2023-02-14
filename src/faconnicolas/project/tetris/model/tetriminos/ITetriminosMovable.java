@@ -3,7 +3,7 @@ package faconnicolas.project.tetris.model.tetriminos;
 /**
  * Interface used to implement classes to move a tetriminos
  */
-public interface ITetriminosMovable {
+public interface ITetriminosMovable extends Rotatable {
 
     /**
      * move down the tetriminos
