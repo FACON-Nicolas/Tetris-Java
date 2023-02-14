@@ -1,9 +1,12 @@
 package faconnicolas.project.tetris.controller;
 
+import faconnicolas.project.tetris.Tetris;
 import faconnicolas.project.tetris.model.grid.Grid;
+import faconnicolas.project.tetris.model.player.Player;
 import faconnicolas.project.tetris.model.tetriminos.GridTetriminosMerger;
 import faconnicolas.project.tetris.model.tetriminos.TetriminosManager;
 import faconnicolas.project.tetris.model.window.Updatable;
+import faconnicolas.project.tetris.view.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,6 +59,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
         grid = new GridTetriminosMerger(new Grid(null));
         tetriminos = new TetriminosManager(grid, this);
         grid.setTetriminos(tetriminos.getTetriminos());
+        Player.getInstance().setGrid(grid);
     }
 
     /**
@@ -65,8 +69,8 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        update();
         tetriminos.update();
+        update();
     }
 
     /**
@@ -77,7 +81,8 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        grid.draw(getGraphics());
+        g.setColor(Color.white);
+        setBackground(Color.white);
     }
 
     /**
@@ -85,7 +90,17 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     @Override
     public void update() {
+        getGraphics().setColor(Color.WHITE);
         grid.draw(getGraphics());
+        Graphics2D g2d = (Graphics2D) getGraphics();
+        g2d.setColor(Color.white);
+        g2d.fillRect(750, 375, 400, 200);
+        g2d.setFont(g2d.getFont().deriveFont(g2d.getFont().getSize() * 3F));
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setColor(Color.BLACK);
+        g2d.drawString("Name: " + Player.getInstance().getName(), 800, 425);
+        g2d.drawString("Score: " + Player.getInstance().getScore(), 800, 475);
     }
 
     /**
