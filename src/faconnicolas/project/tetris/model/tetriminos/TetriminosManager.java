@@ -1,5 +1,6 @@
 package faconnicolas.project.tetris.model.tetriminos;
 
+import faconnicolas.project.tetris.controller.Panel;
 import faconnicolas.project.tetris.model.window.Updatable;
 
 /**
@@ -22,6 +23,8 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
      */
     private final ITetriminosMovable proxy;
 
+    private final Panel panel;
+
     /**
      * time for manager, manages move down automatically.
      */
@@ -34,10 +37,11 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
      * @param grid grid
      *
      */
-    public TetriminosManager(GridTetriminosMerger grid) {
+    public TetriminosManager(GridTetriminosMerger grid, Panel panel) {
         this.grid = grid;
         this.tetriminos = new Tetriminos(TetriminosFactory.randomTetriminos());
         this.proxy = new TetriminosProxy(grid, tetriminos);
+        this.panel = panel;
         time = System.currentTimeMillis();
     }
 
@@ -130,7 +134,7 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
      */
     @Override
     public void update() {
-        moveDownTetriminos();
+        if (!panel.isOver()) moveDownTetriminos();
     }
 
     /**
@@ -144,6 +148,7 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
             down();
             if (tetriminos.isPlaced() && !grid.isFull())
                 setTetriminos(new Tetriminos(TetriminosFactory.randomTetriminos()));
+            else if (grid.isFull()) panel.setOver();
         }
     }
 
