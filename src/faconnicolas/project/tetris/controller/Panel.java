@@ -101,6 +101,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
             case VK_RIGHT -> tetriminos.right();
             case VK_LEFT -> tetriminos.left();
             case VK_SPACE -> tetriminos.place();
+            case VK_UP -> tetriminos.rotate();
         }
     }
 
