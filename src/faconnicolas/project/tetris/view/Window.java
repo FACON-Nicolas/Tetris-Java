@@ -3,7 +3,6 @@ package faconnicolas.project.tetris.view;
 import faconnicolas.project.tetris.controller.Panel;
 
 import javax.swing.*;
-import java.awt.event.KeyListener;
 
 /**
  * Window class, used to show on the screen everything about the game.
@@ -57,6 +56,5 @@ public class Window {
         tetrisWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         tetrisWindow.setResizable(false);
         tetrisWindow.setVisible(true);
-
     }
 }
