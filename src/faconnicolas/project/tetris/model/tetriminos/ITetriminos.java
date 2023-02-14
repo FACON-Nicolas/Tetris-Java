@@ -3,10 +3,16 @@ package faconnicolas.project.tetris.model.tetriminos;
 public interface ITetriminos extends Rotatable {
 
     /**
-     * get the length
+     * get the width
      *
-     * @return the length
+     * @return the width
      */
-    int length();
+    int width();
 
+    /**
+     * get the height
+     *
+     * @return the height
+     */
+    int height();
 }
