@@ -1,6 +1,9 @@
 package faconnicolas.project.tetris.model.grid;
 
 import faconnicolas.project.tetris.model.color.Color;
+import faconnicolas.project.tetris.model.tetriminos.ITetriminos;
+import faconnicolas.project.tetris.model.tetriminos.Tetriminos;
+import faconnicolas.project.tetris.model.window.Updatable;
 import faconnicolas.project.tetris.view.Drawable;
 
 import java.awt.*;
@@ -26,10 +29,13 @@ public class Grid implements Drawable, IGrid {
      */
     private final ArrayList<Line> lines = new ArrayList<>();
 
+    private Tetriminos tetriminos;
+
     /**
      * Grid constructor, init grid
      */
-    public Grid() {
+    public Grid(Tetriminos tetriminos) {
+        this.tetriminos = tetriminos;
         initGrid();
     }
 
@@ -52,6 +58,16 @@ public class Grid implements Drawable, IGrid {
             line.add(Color.GREY, GRID_HEIGHT - 1);
 
         lines.add(line);
+    }
+
+    /**
+     * set the grid tetriminos
+     *
+     * @param tetriminos new tetriminos
+     */
+    @Override
+    public void setTetriminos(Tetriminos tetriminos) {
+        this.tetriminos = tetriminos;
     }
 
     /**
@@ -100,5 +116,31 @@ public class Grid implements Drawable, IGrid {
     @Override
     public boolean isFull() {
         return lines.get(1).getLineList().stream().filter(cell -> cell.getValue() < 2).count() < 3;
+    }
+
+    /**
+     * Update method, called at each frame
+     */
+    @Override
+    public void update() {
+        if (tetriminos.isPlaced()) {
+            removeFullLines();
+        }
+    }
+
+    private void removeFullLines() {
+        for (int i = 0; i < GRID_HEIGHT; i++) {
+            if (i == 0 || i == GRID_HEIGHT - 1) continue;
+            if (lines.get(i).isFull()) {
+                lines.remove(i--);
+                Line line = new Line(1);
+                lines.add(1, line);
+            }
+        } setLinesRow();
+    }
+
+    private void setLinesRow() {
+        for (int i = 0; i < GRID_HEIGHT; i++)
+            lines.get(i).setRow(i);
     }
 }

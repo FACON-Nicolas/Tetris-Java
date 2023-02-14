@@ -10,7 +10,7 @@ import faconnicolas.project.tetris.model.color.Color;
 /**
  * Line is here to have lines in my Tetris' grid.
  */
-public class Line implements ILine, Drawable {
+public class Line implements ILine, Drawable, GridPositionable {
 
     /**
      * line's container
@@ -44,7 +44,7 @@ public class Line implements ILine, Drawable {
      */
     @Override
     public boolean isFull() {
-        return lineList.stream().noneMatch(cell -> cell.getValue() != 0);
+        return lineList.stream().noneMatch(cell -> cell.getValue() == 0);
     }
 
     /**
@@ -121,5 +121,47 @@ public class Line implements ILine, Drawable {
      */
     void add(Color color, int index) {
         lineList.add(new Cell(color, index, lineList.size()));
+    }
+
+    /**
+     * get current row
+     *
+     * @return current row
+     */
+    @Override
+    public int getRow() {
+        return lineList.get(0).getRow();
+    }
+
+    /**
+     * get current column
+     *
+     * @return current column
+     */
+    @Override
+    public int getColumn() {
+        throw new UnsupportedOperationException("It is impossible because a line has no column.");
+    }
+
+    /**
+     * set current row
+     *
+     * @param row new row
+     */
+    @Override
+    public void setRow(int row) {
+        if (getRow() == row) return;
+        for (ICell cell : lineList)
+            cell.setRow(row);
+    }
+
+    /**
+     * set current column
+     *
+     * @param column new column
+     */
+    @Override
+    public void setColumn(int column) {
+        throw new UnsupportedOperationException("It is impossible because a line has no column.");
     }
 }
