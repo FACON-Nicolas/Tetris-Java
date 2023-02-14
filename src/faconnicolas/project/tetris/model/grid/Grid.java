@@ -128,6 +128,9 @@ public class Grid implements Drawable, IGrid {
         }
     }
 
+    /**
+     * Removes all lines full.
+     */
     private void removeFullLines() {
         for (int i = 0; i < GRID_HEIGHT; i++) {
             if (i == 0 || i == GRID_HEIGHT - 1) continue;
@@ -139,6 +142,9 @@ public class Grid implements Drawable, IGrid {
         } setLinesRow();
     }
 
+    /**
+     * set the line index
+     */
     private void setLinesRow() {
         for (int i = 0; i < GRID_HEIGHT; i++)
             lines.get(i).setRow(i);
