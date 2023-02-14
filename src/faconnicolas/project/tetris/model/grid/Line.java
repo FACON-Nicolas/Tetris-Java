@@ -48,6 +48,16 @@ public class Line implements ILine, Drawable {
     }
 
     /**
+     * check if the line is empty thanks to a lambda expression.
+     *
+     * @return <code>true</code> if empty else <code>false</code>
+     */
+    @Override
+    public boolean isEmpty() {
+        return lineList.stream().allMatch(cell -> cell.getValue() < 2);
+    }
+
+    /**
      * create a line's container copy and returns it.
      *
      * @return a copy fo the line's container.
