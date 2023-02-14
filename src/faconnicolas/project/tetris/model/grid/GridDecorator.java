@@ -79,16 +79,30 @@ public abstract class GridDecorator implements IGrid {
         return grid;
     }
 
+    /**
+     * check if the grid is full
+     *
+     * @return <code>true</code> if the grid is full else <code>false</code>
+     */
     @Override
     public boolean isFull() {
         return grid.isFull();
     }
 
+    /**
+     * setter for tetriminos
+     *
+     * @param tetriminos new tetriminos
+     */
     @Override
     public void setTetriminos(Tetriminos tetriminos) {
         grid.setTetriminos(tetriminos);
     }
 
+
+    /**
+     * called each time we need to call it.
+     */
     @Override
     public void update() {
         grid.update();
