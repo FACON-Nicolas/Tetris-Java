@@ -34,8 +34,14 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     public static final int DELAY = 16;
 
+    /**
+     * Tetriminos Manager
+     */
     private final TetriminosManager tetriminos;
 
+    /**
+     * game over boolean
+     */
     private boolean isOver = false;
 
     /**
