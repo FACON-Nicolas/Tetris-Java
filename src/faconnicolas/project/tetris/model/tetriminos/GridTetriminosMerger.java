@@ -3,7 +3,6 @@ package faconnicolas.project.tetris.model.tetriminos;
 import faconnicolas.project.tetris.model.grid.Grid;
 import faconnicolas.project.tetris.model.grid.GridDecorator;
 import faconnicolas.project.tetris.model.grid.IGrid;
-import faconnicolas.project.tetris.model.tetriminos.Tetriminos;
 
 /**
  * Decorator used to merge tetriminos with the grid.
