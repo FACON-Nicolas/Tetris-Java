@@ -29,6 +29,11 @@ public class Line implements ILine, Drawable, GridPositionable {
         initLine(indexLine);
     }
 
+    /**
+     * init the line according to the indexLine
+     *
+     * @param indexLine line's index.
+     */
     void initLine(int indexLine) {
         lineList.add(new Cell(Color.GREY, indexLine, 0));
         for (int i = 1; i < Grid.GRID_WIDTH - 1; i++)
