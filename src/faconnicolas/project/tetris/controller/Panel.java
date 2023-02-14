@@ -47,8 +47,9 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
         addKeyListener(this);
         timer = new Timer(DELAY, this);
         timer.start();
-        grid = new GridTetriminosMerger(new Grid());
+        grid = new GridTetriminosMerger(new Grid(null));
         tetriminos = new TetriminosManager(grid, this);
+        grid.setTetriminos(tetriminos.getTetriminos());
     }
 
     /**
