@@ -1,5 +1,7 @@
 package faconnicolas.project.tetris.model.grid;
 
+import faconnicolas.project.tetris.model.tetriminos.Tetriminos;
+
 import java.awt.*;
 
 /**
@@ -80,5 +82,15 @@ public abstract class GridDecorator implements IGrid {
     @Override
     public boolean isFull() {
         return grid.isFull();
+    }
+
+    @Override
+    public void setTetriminos(Tetriminos tetriminos) {
+        grid.setTetriminos(tetriminos);
+    }
+
+    @Override
+    public void update() {
+        grid.update();
     }
 }
