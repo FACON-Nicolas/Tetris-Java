@@ -3,14 +3,14 @@ package faconnicolas.project.tetris.model.grid;
 /**
  * ILine interface, used to define the Tetris' grid's lines.
  */
-public interface ILine {
+public interface ILine extends Fillable {
 
     /**
-     * check if the line is full thanks to a lambda expression.
+     * check if the line is empty thanks to a lambda expression.
      *
-     * @return <code>true</code> if full else <code>false</code>
+     * @return <code>true</code> if empty else <code>false</code>
      */
-    boolean isFull();
+    boolean isEmpty();
 
     /**
      * get a specific cell positioned at a specific index.
