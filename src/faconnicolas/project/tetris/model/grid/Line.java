@@ -113,6 +113,7 @@ public class Line implements ILine, Drawable, GridPositionable {
      */
     @Override
     public void draw(Graphics g) {
+        if (getRow() == 0 || getRow() == Grid.GRID_HEIGHT - 1) return;
         for (Cell cell : lineList)
             cell.draw(g);
     }

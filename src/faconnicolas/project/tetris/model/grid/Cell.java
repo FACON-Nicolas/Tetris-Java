@@ -152,7 +152,8 @@ public class Cell implements ICell, Drawable {
      */
     @Override
     public void draw(Graphics g) {
+        if (getColumn() == 0 || getColumn() == Grid.GRID_WIDTH - 1) return;
         g.setColor(getColor().getColor());
-        g.fillRect(getX(), getY(), Window.CASE_SIZE - 1, Window.CASE_SIZE - 1);
+        g.fillRect(600 + getX(), getY(), Window.CASE_SIZE - 1, Window.CASE_SIZE - 1);
     }
 }
