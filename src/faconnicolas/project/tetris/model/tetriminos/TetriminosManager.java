@@ -162,7 +162,7 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
             Player.getInstance().update();
             grid.update();
             setTetriminos(new Tetriminos(TetriminosFactory.randomTetriminos()));
-        } else if (tetriminos.isPlaced() && (grid.isFull() || (grid.get(1, tetriminos.getColumn()) != 0))) panel.setOver();
+        } else if (tetriminos.isPlaced() && grid.isFull()) panel.setOver();
     }
 
     /**
