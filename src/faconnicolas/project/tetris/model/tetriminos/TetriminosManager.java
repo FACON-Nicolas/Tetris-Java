@@ -158,7 +158,7 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
      * check tetriminos movement and update it if it has to do it.
      */
     public void checkTetriminos() {
-        if (tetriminos.isPlaced() && (!grid.isFull() && (grid.get(1, tetriminos.getColumn()) == 0))) {
+        if (tetriminos.isPlaced() && !grid.isFull()) {
             Player.getInstance().update();
             grid.update();
             setTetriminos(new Tetriminos(TetriminosFactory.randomTetriminos()));
