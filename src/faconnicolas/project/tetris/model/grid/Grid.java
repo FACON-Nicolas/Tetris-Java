@@ -114,7 +114,7 @@ public class Grid implements Drawable, IGrid {
      */
     @Override
     public boolean isFull() {
-        return lines.get(1).getLineList().stream().filter(cell -> cell.getValue() < 2).count() < 3;
+        return lines.get(1).getLineList().stream().filter(cell -> cell.getValue() != 0).count() >= 3;
     }
 
     /**
