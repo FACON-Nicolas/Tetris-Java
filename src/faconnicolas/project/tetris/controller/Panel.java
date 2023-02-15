@@ -1,12 +1,10 @@
 package faconnicolas.project.tetris.controller;
 
-import faconnicolas.project.tetris.Tetris;
 import faconnicolas.project.tetris.model.grid.Grid;
 import faconnicolas.project.tetris.model.player.Player;
 import faconnicolas.project.tetris.model.tetriminos.GridTetriminosMerger;
 import faconnicolas.project.tetris.model.tetriminos.TetriminosManager;
 import faconnicolas.project.tetris.model.window.Updatable;
-import faconnicolas.project.tetris.view.Window;
 
 import javax.swing.*;
 import java.awt.*;
