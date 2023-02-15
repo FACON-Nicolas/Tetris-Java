@@ -79,8 +79,6 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.white);
-        setBackground(Color.white);
     }
 
     /**
@@ -88,17 +86,16 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     @Override
     public void update() {
-        getGraphics().setColor(Color.WHITE);
+        setBackground(Color.white);
         grid.draw(getGraphics());
         Graphics2D g2d = (Graphics2D) getGraphics();
+        g2d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
         g2d.setColor(Color.white);
-        g2d.fillRect(750, 375, 400, 200);
+        g2d.fillRect(150, 375, 400, 200);
         g2d.setFont(g2d.getFont().deriveFont(g2d.getFont().getSize() * 3F));
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.BLACK);
-        g2d.drawString("Name: " + Player.getInstance().getName(), 800, 425);
-        g2d.drawString("Score: " + Player.getInstance().getScore(), 800, 475);
+        g2d.drawString("Name: " + Player.getInstance().getName(), 200, 425);
+        g2d.drawString("Score: " + Player.getInstance().getScore(), 200, 475);
     }
 
     /**
