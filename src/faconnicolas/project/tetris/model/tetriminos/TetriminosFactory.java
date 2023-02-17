@@ -1,6 +1,8 @@
 package faconnicolas.project.tetris.model.tetriminos;
 
-import java.util.Random;
+import faconnicolas.project.tetris.model.player.Player;
+
+import java.util.*;
 
 public class TetriminosFactory {
 
@@ -114,15 +116,16 @@ public class TetriminosFactory {
      * @return new tetriminos character
      */
     public static String randomTetriminos() {
-        return switch (R.nextInt(7)) {
-            case 0 -> "I";
-            case 1 -> "J";
-            case 2 -> "L";
-            case 3 -> "O";
-            case 4 -> "S";
-            case 5 -> "T";
-            case 6 -> "Z";
-            default -> null;
-        };
+        Map<String, Integer> map = Player.getInstance().getProbaTetriminos();
+        int sum = map.values().stream().mapToInt(Integer::intValue).sum();
+        double r = R.nextDouble(1);
+        final double[] proba = {0.0};
+        StringBuilder key = new StringBuilder();
+        map.forEach((k, v) -> {
+            if (key.toString().length() > 0) return;
+            proba[0] += ((double) v / (double) sum);
+            if (r < proba[0])
+                key.append(k);
+        }); return key.toString();
     }
 }

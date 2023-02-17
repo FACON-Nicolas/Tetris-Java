@@ -149,6 +149,7 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
      */
     public void moveDownTetriminos() {
         if (System.currentTimeMillis() - time >= 500) {
+            Player.getInstance().increment(tetriminos.getValue());
             time = System.currentTimeMillis();
             down();
         }
@@ -162,6 +163,7 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
             Player.getInstance().update();
             grid.update();
             setTetriminos(new Tetriminos(TetriminosFactory.randomTetriminos()));
+            System.out.println(Player.getInstance().getProbaTetriminos());
         } else if (tetriminos.isPlaced() && grid.isFull()) panel.setOver();
     }
 

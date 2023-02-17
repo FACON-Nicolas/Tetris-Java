@@ -114,7 +114,8 @@ public class TetriminosProxy implements ITetriminosMovable {
         grid.erase(tetriminos);
         tetriminos.rotate();
         if (!grid.canMarge(tetriminos))
-            for (int i = 0; i < 3; i++) tetriminos.rotate();
+            for (int i = 0; i < 3; i++)
+                tetriminos.rotate();
         grid.merge(tetriminos);
     }
 }

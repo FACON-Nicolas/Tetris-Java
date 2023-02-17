@@ -1,6 +1,7 @@
 package faconnicolas.project.tetris.model.tetriminos;
 
 import faconnicolas.project.tetris.model.grid.GridPositionable;
+import faconnicolas.project.tetris.model.player.Player;
 
 /**
  * Tetriminos class, used to implement tetriminos. (obviously)
@@ -27,6 +28,8 @@ public class Tetriminos implements ITetriminos, GridPositionable {
      */
     private boolean isPlaced = false;
 
+    private String value;
+
     /**
      * Tetriminos constructor, init the tetriminos according to a string value.
      *
@@ -34,6 +37,7 @@ public class Tetriminos implements ITetriminos, GridPositionable {
      */
     public Tetriminos(String value) {
         initTetriminos(value);
+        this.value = value;
         row = 0;
         column = 5;
     }
@@ -164,5 +168,14 @@ public class Tetriminos implements ITetriminos, GridPositionable {
      */
     public void setPlaced(boolean placed) {
         isPlaced = placed;
+    }
+
+    /**
+     * return string value
+     *
+     * @return string value
+     */
+    public String getValue() {
+        return value;
     }
 }
