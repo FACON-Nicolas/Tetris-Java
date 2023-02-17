@@ -5,6 +5,9 @@ import faconnicolas.project.tetris.model.window.Updatable;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Player implements Updatable {
 
@@ -12,6 +15,8 @@ public class Player implements Updatable {
      * player unique instance
      */
     private static final Player PLAYER = new Player();
+
+    private Map<String, Integer> probaTetriminos = new HashMap<>();
 
     /**
      * playyer name
@@ -46,6 +51,8 @@ public class Player implements Updatable {
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         }
+        for (String t : List.of("I", "O", "L", "J", "Z", "S", "T"))
+            probaTetriminos.put(t, 20);
     }
 
     /**
@@ -92,8 +99,40 @@ public class Player implements Updatable {
         this.grid = grid;
     }
 
+    /**
+     * to string method
+     *
+     * @return player's name
+     */
     @Override
     public String toString() {
         return "Name: " + NAME;
+    }
+
+    /**
+     * get proba tetriminos map.
+     *
+     * @return proba tetriminos map
+     */
+    public Map<String, Integer> getProbaTetriminos() {
+        return probaTetriminos;
+    }
+
+    /**
+     * increment the value for the tetriminos given in parameter
+     *
+     * @param value tetriminos value
+     */
+    public void increment(String value) {
+        probaTetriminos.computeIfPresent(value, (k, v) -> v + 1);
+    }
+
+    /**
+     * decrement the value for the tetriminos given in parameter
+     *
+     * @param value tetriminos value
+     */
+    public void decrement(String value) {
+        probaTetriminos.computeIfPresent(value, (k, v) -> v - 1);
     }
 }
