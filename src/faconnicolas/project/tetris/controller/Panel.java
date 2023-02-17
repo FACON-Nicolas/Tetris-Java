@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import static java.awt.event.KeyEvent.*;
 
@@ -45,6 +46,8 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     private boolean isOver = false;
 
+    private final java.util.List<Integer> keys = new ArrayList<>();
+
     /**
      * panel constructor, init panel and grid.
      */
@@ -69,16 +72,6 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
     public void actionPerformed(ActionEvent actionEvent) {
         tetriminos.update();
         update();
-    }
-
-    /**
-     * paint every component in the game.
-     *
-     * @param g graphics
-     */
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
     }
 
     /**
@@ -120,7 +113,12 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
             case VK_RIGHT -> tetriminos.right();
             case VK_LEFT -> tetriminos.left();
             case VK_SPACE -> tetriminos.place();
-            case VK_UP -> tetriminos.rotate();
+            default -> {
+                if (keys.contains(keyEvent.getKeyCode())) return;
+                switch (keyEvent.getKeyCode()) {
+                    case VK_UP -> tetriminos.rotate();
+                } keys.add(keyEvent.getKeyCode());
+            }
         }
     }
 
@@ -131,7 +129,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     @Override
     public void keyReleased(KeyEvent keyEvent) {
-        // do nothing
+        keys.remove((Integer) keyEvent.getKeyCode());
     }
 
     /**
