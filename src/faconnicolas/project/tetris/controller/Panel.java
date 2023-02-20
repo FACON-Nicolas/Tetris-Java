@@ -16,7 +16,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-import static java.awt.event.KeyEvent.*;
 
 /**
  * Panel is the controller in the game.
@@ -147,5 +146,9 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
 
     public java.util.List<Integer> getKeys() {
         return keys;
+    }
+
+    public void setGameState(IGameState gameState) {
+        this.gameState = gameState;
     }
 }
