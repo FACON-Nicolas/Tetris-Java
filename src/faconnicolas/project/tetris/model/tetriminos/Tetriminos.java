@@ -1,7 +1,6 @@
 package faconnicolas.project.tetris.model.tetriminos;
 
 import faconnicolas.project.tetris.model.grid.GridPositionable;
-import faconnicolas.project.tetris.model.player.Player;
 
 /**
  * Tetriminos class, used to implement tetriminos. (obviously)
