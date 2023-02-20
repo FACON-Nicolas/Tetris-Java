@@ -1,7 +1,6 @@
 package faconnicolas.project.tetris.model.tetriminos;
 
 import faconnicolas.project.tetris.controller.Panel;
-import faconnicolas.project.tetris.controller.gamestate.GameOverGameState;
 import faconnicolas.project.tetris.model.color.ColorUtil;
 import faconnicolas.project.tetris.model.player.Player;
 import faconnicolas.project.tetris.model.window.Updatable;
