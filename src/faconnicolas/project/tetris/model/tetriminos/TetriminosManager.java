@@ -203,7 +203,12 @@ public class TetriminosManager implements ITetriminosMovable, Updatable, Drawabl
         for (int i = 0; i < next.height(); i++) {
             for (int j = 0; j < next.width(); j++) {
                 g.setColor(ColorUtil.getColor(next.get(i, j)).getColor());
-                g.fillRect(1200+(j * Window.CASE_SIZE), 400 + (i * Window.CASE_SIZE), Window.CASE_SIZE-1, Window.CASE_SIZE-1);
+                g.fillRect(1200+(
+                        j * Window.CASE_SIZE),
+                        400 + (i * Window.CASE_SIZE),
+                        Window.CASE_SIZE-1,
+                        Window.CASE_SIZE-1
+                );
             }
         }
     }
