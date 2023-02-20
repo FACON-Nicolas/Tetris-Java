@@ -1,13 +1,18 @@
 package faconnicolas.project.tetris.model.tetriminos;
 
 import faconnicolas.project.tetris.controller.Panel;
+import faconnicolas.project.tetris.model.color.ColorUtil;
 import faconnicolas.project.tetris.model.player.Player;
 import faconnicolas.project.tetris.model.window.Updatable;
+import faconnicolas.project.tetris.view.Drawable;
+import faconnicolas.project.tetris.view.Window;
+
+import java.awt.*;
 
 /**
  * TetriminosManager class is used to manage spawn and update on tetriminos
  */
-public class TetriminosManager implements ITetriminosMovable, Updatable {
+public class TetriminosManager implements ITetriminosMovable, Updatable, Drawable {
 
     /**
      * grid
@@ -20,10 +25,18 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
     private Tetriminos tetriminos;
 
     /**
+     * next tetriminos
+     */
+    private Tetriminos next;
+
+    /**
      * proxy
      */
     private final ITetriminosMovable proxy;
 
+    /**
+     * controller
+     */
     private final Panel panel;
 
     /**
@@ -41,6 +54,7 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
     public TetriminosManager(GridTetriminosMerger grid, Panel panel) {
         this.grid = grid;
         this.tetriminos = new Tetriminos(TetriminosFactory.randomTetriminos());
+        this.next = new Tetriminos(TetriminosFactory.randomTetriminos());
         this.proxy = new TetriminosProxy(grid, tetriminos);
         this.panel = panel;
         time = System.currentTimeMillis();
@@ -88,6 +102,7 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
         this.tetriminos = tetriminos;
         proxy.setTetriminos(getTetriminos());
         grid.setTetriminos(getTetriminos());
+        next = new Tetriminos(TetriminosFactory.randomTetriminos());
     }
 
     /**
@@ -162,7 +177,10 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
         if (tetriminos.isPlaced() && !grid.isFull()) {
             Player.getInstance().update();
             grid.update();
-            setTetriminos(new Tetriminos(TetriminosFactory.randomTetriminos()));
+            setTetriminos(next);
+            Graphics g = panel.getGraphics();
+            g.setColor(Color.WHITE);
+            g.fillRect(1200, 500, 200, 200);
             System.out.println(Player.getInstance().getProbaTetriminos());
         } else if (tetriminos.isPlaced() && grid.isFull()) panel.setOver();
     }
@@ -173,5 +191,20 @@ public class TetriminosManager implements ITetriminosMovable, Updatable {
     public void place() {
         while (!tetriminos.isPlaced()) down();
         time = 0;
+    }
+
+    /**
+     * draw the sprite in the screen
+     *
+     * @param g graphics
+     */
+    @Override
+    public void draw(Graphics g) {
+        for (int i = 0; i < next.height(); i++) {
+            for (int j = 0; j < next.width(); j++) {
+                g.setColor(ColorUtil.getColor(next.get(i, j)).getColor());
+                g.fillRect(1200+(j * Window.CASE_SIZE), 400 + (i * Window.CASE_SIZE), Window.CASE_SIZE-1, Window.CASE_SIZE-1);
+            }
+        }
     }
 }
