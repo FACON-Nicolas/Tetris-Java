@@ -1,5 +1,8 @@
 package faconnicolas.project.tetris.controller;
 
+import faconnicolas.project.tetris.Tetris;
+import faconnicolas.project.tetris.controller.gamestate.IGameState;
+import faconnicolas.project.tetris.controller.gamestate.RunningGameState;
 import faconnicolas.project.tetris.model.grid.Grid;
 import faconnicolas.project.tetris.model.player.Player;
 import faconnicolas.project.tetris.model.tetriminos.GridTetriminosMerger;
@@ -14,7 +17,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-import static java.awt.event.KeyEvent.*;
 
 /**
  * Panel is the controller in the game.
@@ -24,7 +26,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
     /**
      * game grid
      */
-    private final GridTetriminosMerger grid;
+    private GridTetriminosMerger grid;
 
     /**
      * timer for each frame.
@@ -39,7 +41,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
     /**
      * Tetriminos Manager
      */
-    private final TetriminosManager tetriminos;
+    private TetriminosManager tetriminos;
 
     /**
      * game over boolean
@@ -47,6 +49,8 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
     private boolean isOver = false;
 
     private final java.util.List<Integer> keys = new ArrayList<>();
+
+    private IGameState gameState;
 
     /**
      * panel constructor, init panel and grid.
@@ -61,6 +65,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
         tetriminos = new TetriminosManager(grid, this);
         grid.setTetriminos(tetriminos.getTetriminos());
         Player.getInstance().setGrid(grid);
+        gameState = new RunningGameState(this);
     }
 
     /**
@@ -70,9 +75,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        tetriminos.update();
-        update();
-        tetriminos.draw(getGraphics());
+        gameState.update();
     }
 
     /**
@@ -109,18 +112,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-        switch (keyEvent.getKeyCode()) {
-            case VK_DOWN -> tetriminos.down();
-            case VK_RIGHT -> tetriminos.right();
-            case VK_LEFT -> tetriminos.left();
-            case VK_SPACE -> tetriminos.place();
-            default -> {
-                if (keys.contains(keyEvent.getKeyCode())) return;
-                switch (keyEvent.getKeyCode()) {
-                    case VK_UP -> tetriminos.rotate();
-                } keys.add(keyEvent.getKeyCode());
-            }
-        }
+        gameState.keyPressed(keyEvent);
     }
 
     /**
@@ -147,5 +139,31 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     public void setOver() {
         isOver = true;
+    }
+
+    public TetriminosManager getTetriminos() {
+        return tetriminos;
+    }
+
+    public java.util.List<Integer> getKeys() {
+        return keys;
+    }
+
+    public void setGameState(IGameState gameState) {
+        this.gameState = gameState;
+    }
+
+    public void reset() {
+        isOver = false;
+        Player.getInstance().setScore(0);
+        Graphics g = getGraphics();
+        g.clearRect(0, 0, Tetris.WIDTH, Tetris.HEIGHT);
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, Tetris.WIDTH, Tetris.HEIGHT);
+        grid = new GridTetriminosMerger(new Grid(null));
+        tetriminos = new TetriminosManager(grid, this);
+        grid.setTetriminos(tetriminos.getTetriminos());
+        Player.getInstance().setGrid(grid);
+        gameState = new RunningGameState(this);
     }
 }

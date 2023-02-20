@@ -1,6 +1,7 @@
 package faconnicolas.project.tetris.model.tetriminos;
 
 import faconnicolas.project.tetris.controller.Panel;
+import faconnicolas.project.tetris.controller.gamestate.GameOverGameState;
 import faconnicolas.project.tetris.model.color.ColorUtil;
 import faconnicolas.project.tetris.model.player.Player;
 import faconnicolas.project.tetris.model.window.Updatable;
@@ -181,7 +182,6 @@ public class TetriminosManager implements ITetriminosMovable, Updatable, Drawabl
             Graphics g = panel.getGraphics();
             g.setColor(Color.WHITE);
             g.fillRect(1200, 500, 200, 200);
-            System.out.println(Player.getInstance().getProbaTetriminos());
         } else if (tetriminos.isPlaced() && grid.isFull()) panel.setOver();
     }
 
