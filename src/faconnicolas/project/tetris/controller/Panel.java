@@ -1,5 +1,7 @@
 package faconnicolas.project.tetris.controller;
 
+import faconnicolas.project.tetris.controller.gamestate.IGameState;
+import faconnicolas.project.tetris.controller.gamestate.RunningGameState;
 import faconnicolas.project.tetris.model.grid.Grid;
 import faconnicolas.project.tetris.model.player.Player;
 import faconnicolas.project.tetris.model.tetriminos.GridTetriminosMerger;
@@ -48,6 +50,8 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
 
     private final java.util.List<Integer> keys = new ArrayList<>();
 
+    private IGameState gameState;
+
     /**
      * panel constructor, init panel and grid.
      */
@@ -61,6 +65,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
         tetriminos = new TetriminosManager(grid, this);
         grid.setTetriminos(tetriminos.getTetriminos());
         Player.getInstance().setGrid(grid);
+        gameState = new RunningGameState(this);
     }
 
     /**
@@ -70,9 +75,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        tetriminos.update();
-        update();
-        tetriminos.draw(getGraphics());
+        gameState.update();
     }
 
     /**
@@ -109,18 +112,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-        switch (keyEvent.getKeyCode()) {
-            case VK_DOWN -> tetriminos.down();
-            case VK_RIGHT -> tetriminos.right();
-            case VK_LEFT -> tetriminos.left();
-            case VK_SPACE -> tetriminos.place();
-            default -> {
-                if (keys.contains(keyEvent.getKeyCode())) return;
-                switch (keyEvent.getKeyCode()) {
-                    case VK_UP -> tetriminos.rotate();
-                } keys.add(keyEvent.getKeyCode());
-            }
-        }
+        gameState.keyPressed(keyEvent);
     }
 
     /**
@@ -147,5 +139,13 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
      */
     public void setOver() {
         isOver = true;
+    }
+
+    public TetriminosManager getTetriminos() {
+        return tetriminos;
+    }
+
+    public java.util.List<Integer> getKeys() {
+        return keys;
     }
 }
