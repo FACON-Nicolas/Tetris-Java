@@ -1,5 +1,6 @@
 package faconnicolas.project.tetris.controller;
 
+import faconnicolas.project.tetris.Tetris;
 import faconnicolas.project.tetris.controller.gamestate.IGameState;
 import faconnicolas.project.tetris.controller.gamestate.RunningGameState;
 import faconnicolas.project.tetris.model.grid.Grid;
@@ -25,7 +26,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
     /**
      * game grid
      */
-    private final GridTetriminosMerger grid;
+    private GridTetriminosMerger grid;
 
     /**
      * timer for each frame.
@@ -40,7 +41,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
     /**
      * Tetriminos Manager
      */
-    private final TetriminosManager tetriminos;
+    private TetriminosManager tetriminos;
 
     /**
      * game over boolean
@@ -150,5 +151,19 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
 
     public void setGameState(IGameState gameState) {
         this.gameState = gameState;
+    }
+
+    public void reset() {
+        isOver = false;
+        Player.getInstance().setScore(0);
+        Graphics g = getGraphics();
+        g.clearRect(0, 0, Tetris.WIDTH, Tetris.HEIGHT);
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, Tetris.WIDTH, Tetris.HEIGHT);
+        grid = new GridTetriminosMerger(new Grid(null));
+        tetriminos = new TetriminosManager(grid, this);
+        grid.setTetriminos(tetriminos.getTetriminos());
+        Player.getInstance().setGrid(grid);
+        gameState = new RunningGameState(this);
     }
 }
