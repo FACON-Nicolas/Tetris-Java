@@ -72,6 +72,7 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
     public void actionPerformed(ActionEvent actionEvent) {
         tetriminos.update();
         update();
+        tetriminos.draw(getGraphics());
     }
 
     /**
