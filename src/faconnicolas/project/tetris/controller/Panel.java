@@ -141,18 +141,36 @@ public class Panel extends JPanel implements ActionListener, Updatable, KeyListe
         isOver = true;
     }
 
+    /**
+     * getter for tetriminos manager
+     *
+     * @return tetriminos manager
+     */
     public TetriminosManager getTetriminos() {
         return tetriminos;
     }
 
+    /**
+     * getter for keys
+     *
+     * @return keys
+     */
     public java.util.List<Integer> getKeys() {
         return keys;
     }
 
+    /**
+     * setter for game state
+     *
+     * @param gameState new game state
+     */
     public void setGameState(IGameState gameState) {
         this.gameState = gameState;
     }
 
+    /**
+     * reset the controller
+     */
     public void reset() {
         isOver = false;
         Player.getInstance().setScore(0);
