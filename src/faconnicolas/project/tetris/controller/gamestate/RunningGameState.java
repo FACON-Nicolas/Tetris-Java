@@ -1,6 +1,8 @@
 package faconnicolas.project.tetris.controller.gamestate;
 
+import faconnicolas.project.tetris.Tetris;
 import faconnicolas.project.tetris.controller.Panel;
+import faconnicolas.project.tetris.view.Window;
 
 import java.awt.event.KeyEvent;
 
@@ -23,6 +25,9 @@ public class RunningGameState extends GameState {
                 if (panel.getKeys().contains(keyEvent.getKeyCode())) return;
                 switch (keyEvent.getKeyCode()) {
                     case VK_UP -> panel.getTetriminos().rotate();
+                    case VK_ESCAPE -> {
+                        panel.setGameState(nextState());
+                    }
                 } panel.getKeys().add(keyEvent.getKeyCode());
             }
         }
@@ -30,7 +35,7 @@ public class RunningGameState extends GameState {
 
     @Override
     public IGameState nextState() {
-        return null;
+        return new PausedGameState(panel);
     }
 
     /**
