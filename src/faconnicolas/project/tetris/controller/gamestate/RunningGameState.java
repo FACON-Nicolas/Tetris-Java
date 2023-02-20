@@ -46,5 +46,6 @@ public class RunningGameState extends GameState {
         panel.getTetriminos().update();
         panel.update();
         panel.getTetriminos().draw(panel.getGraphics());
+        if (panel.isOver()) panel.setGameState(new GameOverGameState(panel));
     }
 }
