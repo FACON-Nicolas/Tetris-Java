@@ -47,7 +47,7 @@ public class Player implements Updatable {
      */
     private Player() {
         try {
-            NAME = InetAddress.getLocalHost().getHostName();
+            NAME = InetAddress.getLocalHost().getHostName().split("-")[0];
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         }
